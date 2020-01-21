@@ -46,7 +46,7 @@ async def on_message(message):
         elif randNum < 90:
             await message.channel.send(':sink_noodles:')
         elif randNum < 99:
-            await message.channel.send('Shulk is broken')
+            await message.channel.send(':clown:')
         else: # If anyone who isn't from cstat reads this one, this one is a copypasta from the discord server this bot was for
             await message.channel.send('I fucking hate Cheeky from cstat. That little shit waltzes into the MSC acting like she owns the place, rigging brackets on cstat.challonge.com and acting like she doesn’t know the same people fight every week. Brick, being the good TO that he is, naturally doesn\'t want Cheeky running his bracket, showing his loyalty to cstat smash. But this stupid e-girl is absolutely determined to be a pest and completely take over the scene. Cheeky’s devices for messing with our hero Brick can only be described as the work of a criminal mastermind. She utilizes the bracket at his disposal in the MSC, causing great drops in ELO rankings just so she can watch and laugh at Brick. She even bribes the rest of the scene to carry out her sick little game. What\'s worse, at the end of each bracket, she usually wins! What a god damn asshole.')
         return
