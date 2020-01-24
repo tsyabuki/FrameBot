@@ -7,7 +7,7 @@ from eightball import eightballResponse
 with open('token.dat') as TokenFile:
     TOKEN = TokenFile.read()
 
-prefix = "!"
+prefix = "%"
 
 bot = commands.Bot(command_prefix=prefix)
 client = discord.Client()
