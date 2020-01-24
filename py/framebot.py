@@ -2,11 +2,12 @@ import random
 import discord
 from discord.ext import commands
 from characterdict import ufdPage
+from eightball import eightballResponse
 
 with open('token.dat') as TokenFile:
     TOKEN = TokenFile.read()
 
-prefix = "%"
+prefix = "!"
 
 bot = commands.Bot(command_prefix=prefix)
 client = discord.Client()
@@ -74,6 +75,29 @@ async def echo(ctx, *, content:str):
     Returns the content of the message back to the sender!
     '''
     await ctx.send(content)
+
+@bot.command()
+async def eightball(ctx, *, content:str):
+    '''
+    Gives a response to an eightball question given
+    '''
+    random.seed()
+    randNum = random.randrange(len(eightballResponse))
+    await ctx.send(eightballResponse[randNum])
+
+@bot.command()
+async def coinflip(ctx):
+    '''
+    Gives either heads or tails!
+    '''
+    random.seed()
+    randNum = random.randrange(2)
+    if randNum == 0:
+        await ctx.send('Heads!')
+    else:
+        await ctx.send('Tails!')
+
+
 
 @bot.command()
 async def ufd(ctx, *, content:str):
