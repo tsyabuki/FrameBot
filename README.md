@@ -9,7 +9,7 @@ There are a few things necessary in order to get this bot to work.
   * This file must contain ONLY the token for the bot.
   * The token can be generated at https://discordapp.com/developers/applications/
 * A file called "ggtoken.dat" must be created in the py folder of the bot.
-  * This fill must contain ONLY the SmashGG authentification token.
+  * This file must contain ONLY the SmashGG authentification token.
   * The permissions to create the token can be found at https://developer.smash.gg/docs/authentication/
   * The bot will function without this token, but all SmashGG commands will be dissabled
   
