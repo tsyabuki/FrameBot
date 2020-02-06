@@ -8,6 +8,7 @@ ufdPage = {
     "bowser jr." : "https://ultimateframedata.com/bowser_jr.php",
     "jr." : "https://ultimateframedata.com/bowser_jr.php",
     "junior" : "https://ultimateframedata.com/bowser_jr.php",
+    "byleth" : "https://ultimateframedata.com/byleth.php",
     "captain falcon" : "https://ultimateframedata.com/captain_falcon.php",
     "falcon" : "https://ultimateframedata.com/captain_falcon.php",
     "chrom" : "https://ultimateframedata.com/chrom.php",

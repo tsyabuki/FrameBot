@@ -1,5 +1,7 @@
 import random
 import discord
+import smashgg
+from participant import Participant
 from discord.ext import commands
 from characterdict import ufdPage
 from eightball import eightballResponse
@@ -34,15 +36,15 @@ async def on_message(message):
 
     random.seed() # Generates new seed
     randNum = random.random()*100 # Randomizes
-    responseOdds = 1 # Percentage chance that the bot will respond
+    responseOdds = 0.1 # Percentage chance that the bot will respond
 
     if randNum < responseOdds: # Checks if the bot should respond
         randNum = random.random()*100 # Generates new random number 
-        if randNum < 30:
+        if randNum < 40:
             await message.channel.send('Hmmm...') 
-        elif randNum < 60:
-            await message.channel.send('Absolutely right')
         elif randNum < 80:
+            await message.channel.send('Absolutely right')
+        elif randNum < 90:
             await message.channel.send('FrameBot has analyzed the frame data, and has determined you\'re stupid')
         elif randNum < 95:
             await message.channel.send(':sink_noodles:')
@@ -69,12 +71,12 @@ async def ping(ctx):
     latency = bot.latency*1000
     await ctx.send(':ping_pong: Pong! - Sent in {0:.4}ms :ping_pong:'.format(latency))
 
-@bot.command()
-async def echo(ctx, *, content:str):
-    '''
-    Returns the content of the message back to the sender!
-    '''
-    await ctx.send(content)
+# @bot.command()
+# async def echo(ctx, *, content:str):
+#     '''
+#     Returns the content of the message back to the sender!
+#     '''
+#     await ctx.send(content)
 
 @bot.command()
 async def eightball(ctx, *, content:str):
@@ -111,11 +113,26 @@ async def ufd(ctx, *, content:str):
         await ctx.send('UFD page not found')
 
 @bot.command()
-async def event(ctx, id):
+async def event(ctx, url):
     '''
-    Under construction! The bot will find the resulfs of a tournament, given the smashgg ID.
+    The bot will find the results of a tournament, given the event url!
     '''
-    await ctx.send('This command is currently under construction! Try again later.')
+
+    # Formats the URL into a slug
+    slug = url.replace('https://','').replace('http://','').replace('smash.gg/','').replace('/events/','/event/').replace('/overview','')
+
+    placementList = smashgg.tournamentPlacements(8, slug)
+    placementNamesList = []
+
+    for i in placementList:
+        placementNamesList.append(str(i.standing))
+        placementNamesList.append('. ')
+        placementNamesList.append(i.name)
+        placementNamesList.append('\n')
+
+    placementOut = ''.join(placementNamesList)
+
+    await ctx.send(placementOut)
 
 @bot.command()
 async def rage(ctx, percentIn):
